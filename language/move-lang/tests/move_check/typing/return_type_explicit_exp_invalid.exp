@@ -1,0 +1,84 @@
+error: 
+
+   ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:4:15 ───
+   │
+ 5 │         return ()
+   │         ^^^^^^^^^ Invalid return
+   ·
+ 5 │         return ()
+   │                -- The type: '()'
+   ·
+ 4 │     fun t0(): u64 {
+   │               --- Is not compatible with: 'u64'
+   │
+
+error: 
+
+   ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:8:15 ───
+   │
+ 9 │         if (true) return 1 else return 0
+   │                   ^^^^^^^^ Invalid return
+   ·
+ 9 │         if (true) return 1 else return 0
+   │                          - The type: integer
+   ·
+ 8 │     fun t1(): () {
+   │               -- Is not compatible with: '()'
+   │
+
+error: 
+
+   ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:8:15 ───
+   │
+ 9 │         if (true) return 1 else return 0
+   │                                 ^^^^^^^^ Invalid return
+   ·
+ 9 │         if (true) return 1 else return 0
+   │                                        - The type: integer
+   ·
+ 8 │     fun t1(): () {
+   │               -- Is not compatible with: '()'
+   │
+
+error: 
+
+    ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:12:15 ───
+    │
+ 13 │         loop return (0, false, R{});
+    │              ^^^^^^^^^^^^^^^^^^^^^^ Invalid return
+    ·
+ 13 │         loop return (0, false, R{});
+    │                     --------------- The type: '({integer}, bool, 0x8675309::M::R)'
+    ·
+ 12 │     fun t2(): (u64, bool) {
+    │               ----------- Is not compatible with: '(u64, bool)'
+    │
+
+error: 
+
+    ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:17:15 ───
+    │
+ 18 │         while (true) return (0, false, R{});
+    │                      ^^^^^^^^^^^^^^^^^^^^^^ Invalid return
+    ·
+ 18 │         while (true) return (0, false, R{});
+    │                             --------------- The type: '({integer}, bool, 0x8675309::M::R)'
+    ·
+ 17 │     fun t3(): (u64, bool, R, bool) {
+    │               -------------------- Is not compatible with: '(u64, bool, 0x8675309::M::R, bool)'
+    │
+
+error: 
+
+    ┌── tests/move_check/typing/return_type_explicit_exp_invalid.move:22:16 ───
+    │
+ 23 │         while (false) return (0, false, R{});
+    │                       ^^^^^^^^^^^^^^^^^^^^^^ Invalid return
+    ·
+ 23 │         while (false) return (0, false, R{});
+    │                               - The type: integer
+    ·
+ 22 │     fun t4(): (bool, u64, R) {
+    │                ---- Is not compatible with: 'bool'
+    │
+

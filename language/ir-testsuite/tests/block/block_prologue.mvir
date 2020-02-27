@@ -1,0 +1,26 @@
+//! account: vivian, 1000000, 0, validator
+
+//! block-prologue
+//! proposer: vivian
+//! block-time: 1000000
+
+//! new-transaction
+import 0x0.LibraSystem;
+import 0x0.LibraTimestamp;
+
+main() {
+    assert(LibraSystem.get_current_block_height() == 1, 73);
+    assert(LibraSystem.get_current_proposer() == {{vivian}}, 75);
+    assert(LibraTimestamp.now_microseconds() == 1000000, 76);
+
+    return;
+}
+
+//! new-transaction
+import 0x0.LibraSystem;
+import 0x0.LibraTimestamp;
+
+main() {
+    assert(LibraTimestamp.now_microseconds() != 2000000, 77);
+    return;
+}
